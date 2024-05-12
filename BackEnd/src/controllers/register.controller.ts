@@ -1,8 +1,8 @@
-import { Request,Response } from "express";
+import { Request, Response } from 'express';
 
-const register = (req:Request,res:Response)=>{
-    console.log('this is register page');
-    res.send({message:"this is register"});
-}
+const register = (req: Request, res: Response) => {
+  console.log('this is register page');
+  res.send({ message: 'this is register' });
+};
 
-export {register};
+export { register };

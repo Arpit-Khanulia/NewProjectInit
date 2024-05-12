@@ -2,9 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
-
 const app = express();
-
 
 // middlewares
 app.use(
@@ -17,13 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-
-
 // routes import
-import auth from './routes/auth.routes'
-
+import auth from './routes/auth.routes';
 
 // routes
-app.use('/',auth);
+app.use('/', auth);
 
 export { app };

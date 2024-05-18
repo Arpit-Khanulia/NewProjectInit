@@ -17,8 +17,13 @@ app.use(cookieParser());
 
 // routes import
 import auth from './routes/auth.routes';
+import aggregate from './routes/aggregate.routes'
+import protectedRoutes from './routes/protected.routes'
 
 // routes
 app.use('/', auth);
+app.use('/aggregate',aggregate);
+app.use('/',protectedRoutes);
+
 
 export { app };

@@ -1,10 +1,15 @@
 import { Router } from 'express';
-import { login } from '../controllers/login.controller';
-import { register } from '../controllers/register.controller';
+import { login } from '../controllers/auth/login.controller';
+import { register } from '../controllers/auth/register.controller';
+import asyncHandler from 'express-async-handler';
+import { upload } from '../middlewares/multer.middleware';
+import { logout } from '../controllers/auth/logout.controller';
+import { auth } from '../middlewares/auth.middleware';
 
 const router = Router();
 
-router.get('/login', login);
-router.get('/register', register);
+router.post('/register',upload.single('profilePicture'),asyncHandler(register));
+router.post('/login', asyncHandler(login));
+router.patch('/logout',auth,asyncHandler(logout))
 
 export default router;

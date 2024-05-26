@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { CookieOptions, Request, Response } from 'express';
 import createHttpError from 'http-errors';
 import { createResponse } from '../../utils/response';
 import { User } from '../../models/user.model';
@@ -71,15 +71,16 @@ const login = async(req: Request, res: Response) => {
 
   const options = {
     httpOnly:true,
-    secure:true
-  } 
+    secure:true,
+    sameSite:"lax",
+  } as CookieOptions
 
   
   // login success
   res
   .status(200)
-  .cookie("accesstoken",accessToken)
-  .cookie("refreshtoken",refreshToken)
+  .cookie("accesstoken",accessToken,options)
+  .cookie("refreshtoken",refreshToken,options)
   .send(createResponse(data,"User Logged In.."));
 
 };

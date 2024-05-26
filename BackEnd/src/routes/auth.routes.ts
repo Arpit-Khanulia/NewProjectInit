@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { login } from '../controllers/auth/login.controller';
 import { register } from '../controllers/auth/register.controller';
-import asyncHandler from 'express-async-handler';
+import { asyncHandler } from '../utils/asyncHandler';
 import { upload } from '../middlewares/multer.middleware';
 import { logout } from '../controllers/auth/logout.controller';
 import { auth } from '../middlewares/auth.middleware';
